@@ -1,69 +1,124 @@
+import Link from "next/link";
 import Image from "next/image";
+import { getUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { Logo } from "@/components/logo";
 
-export default function Home() {
+const FEATURES = [
+  {
+    number: "01",
+    title: "Offres en commun",
+    body: "Échanges par région, stages par domaine. Tout le monde voit la même base.",
+    image: "/carnet-offres-compass.png",
+  },
+  {
+    number: "02",
+    title: "Suivi perso",
+    body: "Tes candidatures, relances et notes — personne ne fouille dans ton dossier.",
+    image: "/carnet-suivi-ledger.png",
+  },
+  {
+    number: "03",
+    title: "Formalités",
+    body: "Checklists mobilité avant / pendant / après. Pour ne pas oublier le visa.",
+    image: "/carnet-formalites-stamp.png",
+  },
+] as const;
+
+export default async function LandingPage() {
+  const user = await getUser();
+  if (user) redirect("/accueil");
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="relative min-h-dvh overflow-hidden bg-[#fff8ef]">
+      <div className="pointer-events-none absolute -left-32 top-20 size-96 rounded-full bg-lagoon/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 size-[28rem] rounded-full bg-saffron/20 blur-3xl" />
+
+      <header className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
+        <Logo href="/" subtitle="4A-INFO" size="lg" />
+        <div className="flex items-center gap-2">
+          <Link href="/connexion" className="rounded-full px-4 py-2 text-sm font-medium text-muted hover:text-ink">
+            Connexion
+          </Link>
+          <Link
+            href="/inscription"
+            className="rounded-full bg-lagoon px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-lagoon-ink"
+          >
+            Rejoindre
+          </Link>
+        </div>
+      </header>
+
+      <main className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-6 lg:grid-cols-2 lg:pt-12">
+        <div>
+          <p className="inline-flex items-center gap-2 rounded-full bg-saffron-soft px-3 py-1 text-xs font-bold uppercase tracking-wider text-saffron">
+            Promo info · mobilité & stages
+          </p>
+          <h1 className="font-display mt-5 text-4xl font-semibold leading-tight tracking-tight text-ink md:text-5xl lg:text-6xl">
+            Le carnet de voyage de la 4A-INFO.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          <p className="mt-5 max-w-lg text-base leading-7 text-muted">
+            Offres partagées, suivi perso, formalités sans prise de tête. Moins dashboard LinkedIn, plus
+            groupe de promo qui s&apos;organise avant de partir à Berlin.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/inscription"
+              className="inline-flex min-h-12 items-center rounded-full bg-lagoon px-6 text-sm font-semibold text-white shadow-lg shadow-lagoon/25 hover:bg-lagoon-ink"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Créer mon compte
+            </Link>
+            <Link
+              href="/connexion"
+              className="inline-flex min-h-12 items-center rounded-full border-2 border-ink/15 bg-paper px-6 text-sm font-semibold hover:bg-white"
             >
-              Learning
-            </a>{" "}
-            center.
+              J&apos;ai déjà un compte
+            </Link>
+          </div>
+          <p className="mt-4 text-xs text-muted">
+            Code promo : <span className="font-bold text-ink">4A-INFO</span>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+        <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+          <div className="rotate-2 overflow-hidden rounded-[2rem] border-4 border-ink/10 bg-paper shadow-[12px_16px_0_#1a2b3d18]">
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              src="/carnet-auth-hero.png"
+              alt="Illustration carnet de mobilité"
+              width={560}
+              height={720}
+              className="h-auto w-full object-cover"
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+          <div className="absolute -left-2 top-10 -rotate-6 rounded-xl bg-lagoon px-3 py-2 text-xs font-bold text-white shadow-lg">
+            11 écoles partenaires
+          </div>
+          <div className="absolute -right-2 bottom-16 rotate-3 rounded-xl bg-saffron px-3 py-2 text-xs font-bold text-white shadow-lg">
+            stages anglophones
+          </div>
         </div>
       </main>
+
+      <section className="relative mx-auto grid max-w-6xl gap-4 px-5 pb-16 md:grid-cols-3">
+        {FEATURES.map(({ number, title, body, image }) => (
+          <div
+            key={number}
+            className="rounded-[1.5rem] border-2 border-ink/8 bg-paper/80 p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl ring-1 ring-ink/6">
+              <Image src={image} alt="" fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" />
+            </div>
+            <span className="font-display text-2xl italic text-saffron">{number}</span>
+            <h2 className="font-display mt-3 text-lg font-semibold">{title}</h2>
+            <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
+          </div>
+        ))}
+      </section>
+
+      <footer className="border-t border-ink/10 py-6 text-center text-xs text-muted">
+        Carnet — outil promo 4A-INFO · Campus de Terre-Sainte
+      </footer>
     </div>
   );
 }

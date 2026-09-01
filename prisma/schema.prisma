@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  promo        String   @default("4A-INFO")
+  createdAt    DateTime @default(now())
+
+  opportunities     Opportunity[]
+  deadlines         Deadline[]
+  tracks            Track[]
+  comments          Comment[]
+  checklistProgress ChecklistProgress[]
+}
+
+model ClassConfig {
+  id         String @id @default("default")
+  name       String
+  inviteCode String
+}
+
+model Opportunity {
+  id          String    @id @default(cuid())
+  type        String
+  title       String
+  org         String
+  city        String?
+  country     String    @default("France")
+  region      String    @default("FRANCE")
+  promo       String    @default("4A-INFO")
+  domain      String?
+  duration    String?
+  startHint   String?
+  url         String?
+  contact     String?
+  description String
+  tags        String    @default("")
+  applyBy     DateTime?
+  archived    Boolean   @default(false)
+  createdById String?
+  createdBy   User?     @relation(fields: [createdById], references: [id])
+  createdAt   DateTime  @default(now())
+
+  tracks    Track[]
+  comments  Comment[]
+  deadlines Deadline[]
+}
+
+model Deadline {
+  id            String       @id @default(cuid())
+  title         String
+  date          DateTime
+  kind          String
+  scope         String
+  notes         String?
+  done          Boolean      @default(false)
+  opportunityId String?
+  opportunity   Opportunity? @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  createdById   String
+  createdBy     User         @relation(fields: [createdById], references: [id])
+}
+
+model Track {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  opportunityId String
+  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  status        String   @default("VEILLE")
+  priority      String   @default("MOYEN")
+  notes         String   @default("")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  events TrackEvent[]
+
+  @@unique([userId, opportunityId])
+}
+
+model TrackEvent {
+  id      String   @id @default(cuid())
+  trackId String
+  track   Track    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  type    String
+  at      DateTime @default(now())
+  content String
+}
+
+model Comment {
+  id            String      @id @default(cuid())
+  opportunityId String
+  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  body          String
+  createdAt     DateTime    @default(now())
+}
+
+model ChecklistItem {
+  id        String @id @default(cuid())
+  kind      String
+  phase     String
+  title     String
+  hint      String?
+  sortOrder Int
+
+  progress ChecklistProgress[]
+}
+
+model ChecklistProgress {
+  id      String         @id @default(cuid())
+  userId  String
+  user    User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemId  String
+  item    ChecklistItem  @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  done    Boolean        @default(false)
+  doneAt  DateTime?
+  note    String?
+  dueDate DateTime?
+
+  @@unique([userId, itemId])
+}

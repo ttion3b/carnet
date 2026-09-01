@@ -1,26 +1,152 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #fff8ef;
+  --paper: #fffdf8;
+  --ink: #12345a;
+  --muted: #607080;
+  --line: #e3d8ca;
+  --lagoon: #0868b8;
+  --lagoon-ink: #064d8c;
+  --lagoon-soft: #e8f3fb;
+  --saffron: #ed741d;
+  --saffron-soft: #fff0df;
+  --indigo: #153e68;
+  --indigo-soft: #e3e9ef;
+  --rose: #b53b32;
+  --rose-soft: #f7e6e2;
+  --esiroi-gradient: linear-gradient(135deg, #075fb8 0%, #102b4e 100%);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-lagoon: var(--lagoon);
+  --color-lagoon-ink: var(--lagoon-ink);
+  --color-lagoon-soft: var(--lagoon-soft);
+  --color-saffron: var(--saffron);
+  --color-saffron-soft: var(--saffron-soft);
+  --color-indigo: var(--indigo);
+  --color-indigo-soft: var(--indigo-soft);
+  --color-rose: var(--rose);
+  --color-rose-soft: var(--rose-soft);
+  --font-sans: var(--font-raleway);
+  --font-display: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--bg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 18% 8%, rgb(8 104 184 / 0.055), transparent 24rem),
+    radial-gradient(circle at 92% 92%, rgb(237 116 29 / 0.07), transparent 28rem),
+    linear-gradient(rgb(18 52 90 / 0.018) 1px, transparent 1px),
+    var(--bg);
+  background-size: 100% 28px;
+  color: var(--ink);
+  font-family: var(--font-raleway), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.carnet-card {
+  border: 1px solid var(--line);
+  background: rgb(255 253 248 / 0.95);
+  box-shadow: 0 8px 24px -18px rgb(18 52 90 / 0.45);
+}
+
+.illus-watermark {
+  pointer-events: none;
+  user-select: none;
+}
+
+.illus-watermark img,
+.illus-watermark :is(img, [data-next-image]) {
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+}
+
+.illus-accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.illus-accent::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, var(--bg) 8%, rgb(255 248 239 / 0.55) 45%, transparent);
+}
+
+.paper-note {
+  position: relative;
+  border: 1px solid rgb(18 52 90 / 0.1);
+  background: #fffdf7;
+  box-shadow: 3px 5px 12px rgb(18 52 90 / 0.11);
+}
+
+.paper-note::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -5px;
+  width: 3.5rem;
+  height: 0.65rem;
+  transform: translateX(-50%) rotate(-1deg);
+  background: rgb(8 104 184 / 0.28);
+}
+
+.brush-active {
+  position: relative;
+  isolation: isolate;
+  color: white;
+}
+
+.brush-active::before {
+  content: "";
+  position: absolute;
+  inset: 2px -4px;
+  z-index: -1;
+  background: var(--lagoon);
+  clip-path: polygon(2% 15%, 98% 3%, 95% 91%, 3% 100%, 0 48%);
+}
+
+.grid-paper {
+  background-image:
+    linear-gradient(rgb(8 104 184 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(8 104 184 / 0.055) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+::selection {
+  background: var(--lagoon-soft);
+  color: var(--lagoon-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lagoon);
+  outline-offset: 2px;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -30,8 +30,23 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files
+.env
+.env.local
+.env*.local
+
+# sqlite (legacy local)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# large design reference mockups (optional — keep hero assets in public/)
+public/carnet-*-reference.png
+public/carnet-fun-*.png
+public/carnet-dashboard-banner.png
+public/carnet-mascot.png
+public/carnet-mobile-reference.png
 
 # vercel
 .vercel
@@ -39,3 +54,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.neon
