@@ -33,7 +33,6 @@ export default async function FormalitesPage({
         eyebrow="Checklists"
         title="Formalités"
         description="Deux parcours : stage et semestre d'échange. Coche, ajoute une date, laisse-toi une note."
-        image="/carnet-formalites-stamp.png"
       />
 
       <div className="flex gap-2">

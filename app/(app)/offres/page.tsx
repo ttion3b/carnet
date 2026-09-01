@@ -4,7 +4,6 @@ import { requireUser } from "@/lib/auth";
 import { getOffers } from "@/lib/queries";
 import { OffersByRegion } from "@/components/offers-by-region";
 import { OffersByDomain } from "@/components/offers-by-domain";
-import { DecorativeImage } from "@/components/carnet-ui";
 import { Input, Select } from "@/components/ui";
 import { REGIONS } from "@/lib/constants";
 import { STAGE_DOMAINS } from "@/lib/domains";
@@ -36,16 +35,8 @@ export default async function OffresPage({
     );
 
   return (
-    <div className="relative mx-auto max-w-6xl">
-      <DecorativeImage
-        src="/carnet-contour-texture.png"
-        variant="watermark"
-        fill
-        sizes="900px"
-        className="right-0 top-0 h-72 w-full max-w-3xl opacity-60"
-        imageClassName="object-right-top opacity-[0.12]"
-      />
-      <header className="relative z-10 flex flex-wrap items-start justify-between gap-5">
+    <div className="mx-auto max-w-6xl">
+      <header className="flex flex-wrap items-start justify-between gap-5">
         <div className="min-w-0 flex-1">
           <h1 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
             Choisis ton prochain chapitre
@@ -63,7 +54,7 @@ export default async function OffresPage({
         </Link>
       </header>
 
-      <form className="relative z-10 mt-7 flex max-w-4xl flex-wrap gap-2" action="/offres">
+      <form className="mt-7 flex max-w-4xl flex-wrap gap-2" action="/offres">
         <input type="hidden" name="kind" value={kind} />
         <label className="relative min-w-64 flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
@@ -97,7 +88,7 @@ export default async function OffresPage({
         </button>
       </form>
 
-      <nav className="relative z-10 mt-7 flex items-end gap-2 border-b border-line" aria-label="Type d’offre">
+      <nav className="mt-7 flex items-end gap-2 border-b border-line" aria-label="Type d’offre">
         <Link href="/offres?kind=echange" className={tabClass(kind === "echange")}>
           Semestres d’échange
         </Link>
@@ -106,7 +97,7 @@ export default async function OffresPage({
         </Link>
       </nav>
 
-      <section className="relative z-10 mt-3">
+      <section className="mt-3">
         {kind === "echange" ? (
           <OffersByRegion
             offers={offers}

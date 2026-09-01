@@ -47,7 +47,6 @@ export default async function CalendrierPage() {
         eyebrow="Dates"
         title="Calendrier"
         description="Clique un jour pour y coller une échéance. Dates école = toute la promo."
-        image="/carnet-calendrier-dates.png"
       />
 
       <MonthCalendar events={events} offers={offers} />

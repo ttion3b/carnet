@@ -106,11 +106,13 @@ export async function updateOfferAction(id: string, formData: FormData) {
 export async function addCommentAction(opportunityId: string, formData: FormData) {
   const user = await requireUser();
   const body = String(formData.get("body") ?? "").trim();
-  if (body.length < 2) return;
+  if (body.length < 2) return { error: "Écris au moins quelques mots." };
+  if (body.length > 500) return { error: "500 caractères maximum." };
   await prisma.comment.create({
     data: { opportunityId, userId: user.id, body },
   });
   revalidatePath(`/offres/${opportunityId}`);
+  return { ok: true };
 }
 
 export async function archiveOfferAction(id: string) {

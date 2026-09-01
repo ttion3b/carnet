@@ -26,7 +26,6 @@ export default async function PromoPage() {
         eyebrow="Classe"
         title={config?.name ?? "Promo"}
         description={`${users.length} compte${users.length > 1 ? "s" : ""} · ${offerCount} offres · ${deadlineCount} échéance${deadlineCount > 1 ? "s" : ""} ouvertes`}
-        image="/carnet-promo-groupe.png"
       />
       <p className="-mt-4 text-xs text-muted">
         Code d&apos;invitation : <span className="font-bold text-ink">{config?.inviteCode}</span>

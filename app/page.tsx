@@ -9,19 +9,16 @@ const FEATURES = [
     number: "01",
     title: "Offres en commun",
     body: "Échanges par région, stages par domaine. Tout le monde voit la même base.",
-    image: "/carnet-offres-compass.png",
   },
   {
     number: "02",
     title: "Suivi perso",
     body: "Tes candidatures, relances et notes — personne ne fouille dans ton dossier.",
-    image: "/carnet-suivi-ledger.png",
   },
   {
     number: "03",
     title: "Formalités",
     body: "Checklists mobilité avant / pendant / après. Pour ne pas oublier le visa.",
-    image: "/carnet-formalites-stamp.png",
   },
 ] as const;
 
@@ -101,14 +98,11 @@ export default async function LandingPage() {
       </main>
 
       <section className="relative mx-auto grid max-w-6xl gap-4 px-5 pb-16 md:grid-cols-3">
-        {FEATURES.map(({ number, title, body, image }) => (
+        {FEATURES.map(({ number, title, body }) => (
           <div
             key={number}
             className="rounded-[1.5rem] border-2 border-ink/8 bg-paper/80 p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl ring-1 ring-ink/6">
-              <Image src={image} alt="" fill className="object-cover" sizes="(max-width:768px) 100vw, 33vw" />
-            </div>
             <span className="font-display text-2xl italic text-saffron">{number}</span>
             <h2 className="font-display mt-3 text-lg font-semibold">{title}</h2>
             <p className="mt-2 text-sm leading-6 text-muted">{body}</p>

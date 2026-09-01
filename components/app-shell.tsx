@@ -39,7 +39,7 @@ export function AppShell({
 
   return (
     <div className="flex min-h-dvh bg-bg text-ink">
-      <aside className="relative hidden w-56 shrink-0 flex-col overflow-hidden border-r border-line bg-paper/90 md:flex">
+      <aside className="relative hidden w-56 shrink-0 flex-col border-r border-line bg-paper/90 md:flex">
         <div className="px-6 py-7">
           <Logo href="/accueil" subtitle="4A-INFO" size="lg" />
         </div>
@@ -66,7 +66,7 @@ export function AppShell({
           })}
         </nav>
 
-        <div className="relative border-t border-line p-4">
+        <div className="relative mt-auto border-t border-line p-4 pb-6">
           <span className="pointer-events-none absolute -bottom-14 -left-12 size-28 rotate-12 rounded-[45%] bg-lagoon/10" />
           <div className="mb-2 flex items-center gap-3 px-3 py-2">
             <span className="grid size-8 shrink-0 place-items-center rounded-full bg-ink font-display text-sm text-paper">

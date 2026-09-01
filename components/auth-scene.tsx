@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { useActionState } from "react";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import { loginAction, registerAction, type AuthState } from "@/lib/actions/auth";
 import { Logo } from "@/components/logo";
-import { IllustrationFrame } from "@/components/carnet-ui";
 import { cn } from "@/lib/utils";
 
 function useAuthRedirect(state: AuthState) {
@@ -286,15 +285,16 @@ export function AuthScene({
         <main className="flex flex-col justify-center px-5 py-10 sm:px-8">
           <div className="mb-6 lg:hidden">
             <Logo href="/" subtitle="4A-INFO" />
-            <IllustrationFrame
-              src="/carnet-auth-hero.png"
-              alt=""
-              width={360}
-              height={480}
-              className="mx-auto mt-6 w-full max-w-xs"
-              rotate="rotate-[2deg]"
-              priority
-            />
+            <div className="mx-auto mt-6 w-full max-w-xs overflow-hidden rounded-[2rem] border-4 border-ink/10 bg-paper shadow-[8px_12px_0_#1a2b3d15] rotate-[2deg]">
+              <Image
+                src="/carnet-auth-hero.png"
+                alt=""
+                width={360}
+                height={480}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
           </div>
           <div className="rounded-[2rem] border-2 border-ink/10 bg-paper/90 p-6 shadow-[0_20px_60px_-30px_#1a2b3d40] backdrop-blur-sm sm:p-8">
             {children}

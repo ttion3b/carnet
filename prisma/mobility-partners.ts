@@ -25,7 +25,7 @@ export const MOBILITY_PARTNERS: PartnerSeed[] = [
     formationUrl: "https://telecomnancy.univ-lorraine.fr/formation/approfondissements/",
     contact: "Service relations internationales ESIROI",
     applyBy: null,
-    description: `Partenaire ESIROI-IT · vœux mobilité / double diplôme · 5 places.
+    description: `Partenaire ESIROI-IT · vœux mobilité / double diplôme.
 
 Approfondissements disponibles :
 • GL — Génie logiciel
@@ -34,9 +34,7 @@ Approfondissements disponibles :
 • BI — Business intelligence
 • SE — Systèmes embarqués
 
-Formation & approfondissements : https://telecomnancy.univ-lorraine.fr/formation/approfondissements/
-Maquette pédagogique 2024 disponible sur le site partenaire.
-
+Maquette pédagogique disponible sur le site partenaire.
 Dossier après validation ESIROI : contacter le service RI pour les dates internes.`,
   },
   {
@@ -50,15 +48,13 @@ Dossier après validation ESIROI : contacter le service RI pour les dates intern
     formationUrl: "https://www.telecom-st-etienne.fr/wp-content/uploads/2021/04/plaquette-inge-site2122.pdf",
     contact: "Stéphane Robert · stephane.robert@univ-st-etienne.fr · 04 77 91 58 63",
     applyBy: new Date("2026-05-05"),
-    description: `Partenaire ESIROI-IT · 5 places.
+    description: `Partenaire ESIROI-IT.
 
 Approfondissements : RT (Réseaux & Télécom), DATA, VR (Réalité virtuelle), SE (Systèmes embarqués).
 
 Deadlines partenaire :
 • Cyber-sécurité : février
 • Génie logiciel : 5 mai
-
-Plaquette formation : https://www.telecom-st-etienne.fr/wp-content/uploads/2021/04/plaquette-inge-site2122.pdf
 
 Contact coordinateur double diplôme : Stéphane Robert (Directeur des Études FISE, coordinateur DD).`,
   },
@@ -74,11 +70,9 @@ Contact coordinateur double diplôme : Stéphane Robert (Directeur des Études F
     applyUrl: "https://www.insa-lyon.fr/fr/admission-en-echange",
     contact: "Tanguy Risset · Tanguy.Risset@insa-lyon.fr · Oana Iova · oana-teodora.iova@insa-lyon.fr",
     applyBy: new Date("2026-03-31"),
-    description: `Partenaire ESIROI-IT · 5 places · approfondissement RT (Réseaux & Télécom).
+    description: `Partenaire ESIROI-IT · approfondissement RT (Réseaux & Télécom).
 
-Présentation de la formation : https://telecom.insa-lyon.fr/fr/content/presentation-generale-de-formation
-Candidature après validation ESIROI : https://www.insa-lyon.fr/fr/admission-en-echange
-
+Candidature après validation ESIROI sur le portail INSA Lyon.
 Deadline partenaire : mars.
 
 Contacts :
@@ -98,9 +92,7 @@ Contacts :
     applyBy: null,
     description: `Partenaire listé sur la plaquette ESIROI-IT · capacité 0 place indiquée (à confirmer avec la RI).
 
-Approfondissements : CSEC (Cyber-sécurité), SE (Systèmes embarqués).
-
-Formation : https://www.insa-hautsdefrance.fr/formation/ingenieurs-integrez-linsa-hdf`,
+Approfondissements : CSEC (Cyber-sécurité), SE (Systèmes embarqués).`,
   },
   {
     title: "Semestre — Polytech Nice",
@@ -113,12 +105,9 @@ Formation : https://www.insa-hautsdefrance.fr/formation/ingenieurs-integrez-lins
     formationUrl: "https://polytech.univ-cotedazur.fr/formations/formations-ingenieurs/ingenieur-informatique",
     contact: "Jean-Yves Tigli · jean-yves.tigli@univ-cotedazur.fr · Lorenzini Philippe · lorenz@polytech.unice.fr · Igor Litovsky · Igor.LITOVSKY@univ-cotedazur.fr",
     applyBy: new Date("2026-03-31"),
-    description: `Partenaire ESIROI-IT · 5 places.
+    description: `Partenaire ESIROI-IT.
 
 Approfondissements : IoT, GL, CSEC, DATA, IHM (Interaction Homme-Machine).
-
-Programme ingénieur informatique : https://polytech.univ-cotedazur.fr/formations/formations-ingenieurs/ingenieur-informatique
-
 Deadline partenaire : mars.`,
   },
   {
@@ -132,9 +121,7 @@ Deadline partenaire : mars.`,
     formationUrl: "https://www.polytech.umontpellier.fr/images/formation/ig/Livret_de_l%C3%A9tudiant_IG_2023-24_v1.pdf",
     contact: "Catherine Faur · catherine.faur@umontpellier.fr",
     applyBy: null,
-    description: `Partenaire ESIROI-IT · 5 places · approfondissement IGEST (Informatique de gestion).
-
-Livret étudiant (maquette) : https://www.polytech.umontpellier.fr/images/formation/ig/Livret_de_l%C3%A9tudiant_IG_2023-24_v1.pdf
+    description: `Partenaire ESIROI-IT · approfondissement IGEST (Informatique de gestion).
 
 Contact : Catherine Faur — catherine.faur@umontpellier.fr`,
   },
@@ -149,11 +136,9 @@ Contact : Catherine Faur — catherine.faur@umontpellier.fr`,
     formationUrl: "https://polytech.univ-nantes.fr/medias/fichier/maquette-info-2023-fr_1701332461377-pdf",
     contact: "Service relations internationales ESIROI",
     applyBy: null,
-    description: `Partenaire ESIROI-IT · 5 places.
+    description: `Partenaire ESIROI-IT.
 
-Approfondissements : IHM, AAD (Aide à la décision), RT, CSEC, SYST (Administration système).
-
-Maquette informatique : https://polytech.univ-nantes.fr/medias/fichier/maquette-info-2023-fr_1701332461377-pdf`,
+Approfondissements : IHM, AAD (Aide à la décision), RT, CSEC, SYST (Administration système).`,
   },
   {
     title: "Semestre — SRH Berlin",
@@ -166,12 +151,9 @@ Maquette informatique : https://polytech.univ-nantes.fr/medias/fichier/maquette-
     formationUrl: "https://www.srh-berlin.de/en/master/",
     contact: "Service relations internationales ESIROI",
     applyBy: null,
-    description: `Partenaire ESIROI-IT · 1 place · cursus en anglais.
+    description: `Partenaire ESIROI-IT · cursus en anglais.
 
 Approfondissements : CSEC (Cyber-sécurité), DATA (Analyse de données).
-
-Programmes master : https://www.srh-berlin.de/en/master/
-
 Anticiper logement et niveau d'anglais.`,
   },
   {
@@ -182,15 +164,12 @@ Anticiper logement et niveau d'anglais.`,
     region: "AMERIQUE",
     tags: "GL, CSEC, DATA, BI, RT, JV",
     capacity: 1,
-    formationUrl: "https://www.etsmtl.ca/ets/gouvernance/decanats-et-departements/departement-genie-logiciel-ti",
+    formationUrl: "https://www.etsmtl.ca/Programmes/Cycles-superieurs/Baccalaureat",
     contact: "Service relations internationales ESIROI",
     applyBy: null,
-    description: `Partenaire ESIROI-IT · 1 place.
+    description: `Partenaire ESIROI-IT.
 
 Approfondissements : GL, CSEC, DATA, BI, RT, JV (Jeux vidéo).
-
-Département génie logiciel & TI : https://www.etsmtl.ca/ets/gouvernance/decanats-et-departements/departement-genie-logiciel-ti
-
 Prévoir visa, preuve de fonds, logement et niveau d'anglais/français selon les UE choisies.`,
   },
   {
@@ -204,9 +183,7 @@ Prévoir visa, preuve de fonds, logement et niveau d'anglais/français selon les
     formationUrl: "https://www.sun.ac.za/english/international",
     contact: "Service relations internationales ESIROI",
     applyBy: null,
-    description: `Partenaire listé sur la plaquette ESIROI-IT (SU Stellenbosch) — capacité et approfondissements à confirmer avec la RI.
-
-Bureau international : https://www.sun.ac.za/english/international`,
+    description: `Partenaire listé sur la plaquette ESIROI-IT (SU Stellenbosch) — capacité et approfondissements à confirmer avec la RI.`,
   },
   {
     title: "Semestre — MIT (Inde)",

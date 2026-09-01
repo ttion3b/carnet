@@ -110,10 +110,13 @@ async function syncCatalogOffers() {
     tags: partner.tags,
     applyBy: partner.applyBy,
     createdById: null,
-    description:
-      partner.description +
-      (partner.applyUrl ? `\n\nCandidature partenaire : ${partner.applyUrl}` : "") +
-      (partner.capacity != null ? `\n\nPlaces : ${partner.capacity}` : ""),
+    description: [
+      partner.description,
+      partner.capacity != null ? `Places : ${partner.capacity}` : null,
+      partner.applyUrl ? `Candidature partenaire : ${partner.applyUrl}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n\n"),
   }));
 
   const stageData = INTERNSHIP_OFFERS.map((offer) => ({

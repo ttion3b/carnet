@@ -56,18 +56,17 @@ export function DecorativeImage({
     return (
       <div
         className={cn(
-          "illus-accent pointer-events-none hidden shrink-0 overflow-hidden rounded-xl ring-1 ring-ink/6 lg:block",
+          "relative shrink-0 overflow-hidden rounded-xl bg-paper shadow-sm ring-1 ring-ink/10",
           rotation,
           className,
         )}
-        aria-hidden
       >
         <Image
           src={src}
-          alt=""
+          alt={alt}
           {...imageProps}
           priority={priority}
-          className={cn("object-cover", imageClassName)}
+          className={cn("h-full w-full object-cover", imageClassName)}
         />
       </div>
     );
@@ -75,7 +74,7 @@ export function DecorativeImage({
 
   if (variant === "soft") {
     return (
-      <div className={cn("overflow-hidden rounded-xl ring-1 ring-ink/8", rotation, className)}>
+      <div className={cn("overflow-hidden rounded-xl bg-paper/80 ring-1 ring-ink/8", rotation, className)}>
         <Image
           src={src}
           alt={alt}
@@ -146,36 +145,22 @@ export function PageHeader({
   title,
   description,
   action,
-  image,
-  imageClassName,
   className,
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   action?: React.ReactNode;
-  image?: string;
-  imageClassName?: string;
   className?: string;
 }) {
   return (
-    <header className={cn("relative flex flex-wrap items-end justify-between gap-5", className)}>
-      {image ? (
-        <DecorativeImage
-          src={image}
-          variant="watermark"
-          fill
-          sizes="320px"
-          className={cn("right-0 top-0 hidden h-32 w-48 xl:h-36 xl:w-56", imageClassName)}
-          imageClassName="opacity-[0.16]"
-        />
-      ) : null}
-      <div className="relative z-10 min-w-0 flex-1">
+    <header className={cn("flex flex-col gap-4", className)}>
+      <div className="min-w-0">
         {eyebrow ? <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lagoon">{eyebrow}</p> : null}
         <h1 className="font-display mt-1 text-3xl font-semibold tracking-tight md:text-4xl">{title}</h1>
         {description ? <p className="mt-2 max-w-xl text-sm leading-6 text-muted">{description}</p> : null}
       </div>
-      {action ? <div className="relative z-10">{action}</div> : null}
+      {action ? <div className="flex flex-wrap items-center gap-2">{action}</div> : null}
     </header>
   );
 }
@@ -231,49 +216,33 @@ export function EmptyState({
   href,
   cta,
   compact,
-  image,
 }: {
   title: string;
   description: string;
   href?: string;
   cta?: string;
   compact?: boolean;
-  image?: string | null;
 }) {
-  const showImage = image !== null && image !== undefined && !compact;
-
   return (
     <div
       className={cn(
-        "flex flex-col items-center text-center",
-        compact ? "gap-2 py-6" : "gap-4 py-10",
+        "flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left",
+        compact ? "py-6" : "py-10",
       )}
     >
-      {showImage ? (
-        <DecorativeImage
-          src={image}
-          alt=""
-          variant="soft"
-          width={200}
-          height={140}
-          className="w-40 opacity-90"
-          rotate="rotate-[1deg]"
-        />
-      ) : (
-        <span className="h-px w-10 bg-saffron/70" />
-      )}
-      <div>
+      <span className="h-px w-10 bg-saffron/70" />
+      <div className="min-w-0 flex-1">
         <p className={cn("font-display font-semibold", compact ? "text-base" : "text-xl")}>{title}</p>
         <p className="mt-1 max-w-sm text-sm text-muted">{description}</p>
+        {href && cta ? (
+          <Link
+            href={href}
+            className="mt-3 inline-flex border border-lagoon bg-lagoon px-4 py-2 text-sm font-semibold text-white hover:bg-lagoon-ink"
+          >
+            {cta}
+          </Link>
+        ) : null}
       </div>
-      {href && cta ? (
-        <Link
-          href={href}
-          className="border border-lagoon bg-lagoon px-4 py-2 text-sm font-semibold text-white hover:bg-lagoon-ink"
-        >
-          {cta}
-        </Link>
-      ) : null}
     </div>
   );
 }

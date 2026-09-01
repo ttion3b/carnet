@@ -41,6 +41,22 @@ export function TypeBadge({ type }: { type: string }) {
   );
 }
 
+export function TagBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex min-h-8 items-center rounded-lg bg-lagoon-soft px-3 text-xs font-semibold tracking-wide text-lagoon-ink">
+      {children}
+    </span>
+  );
+}
+
+export function InfoPill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex min-h-8 items-center rounded-full border border-line bg-paper px-3 text-xs font-semibold text-ink">
+      {children}
+    </span>
+  );
+}
+
 export function DeadlineChip({
   date,
   done,

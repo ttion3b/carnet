@@ -2,6 +2,7 @@ import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { updateProfileAction } from "@/lib/actions/checklists";
 import { logoutAction } from "@/lib/actions/auth";
+import { PageHeader } from "@/components/carnet-ui";
 import { Button, Field, Input } from "@/components/ui";
 
 export const metadata = { title: "Paramètres" };
@@ -12,9 +13,7 @@ export default async function ParametresPage() {
 
   return (
     <div className="mx-auto flex max-w-lg flex-col gap-8">
-      <header>
-        <h1 className="text-2xl font-semibold tracking-tight">Paramètres</h1>
-      </header>
+      <PageHeader title="Paramètres" />
 
       <form action={updateProfileAction} className="flex flex-col gap-3 rounded-xl border border-line bg-paper p-4">
         <Field label="Nom affiché">

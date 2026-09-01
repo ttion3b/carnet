@@ -4,7 +4,6 @@ import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { getUpcomingDeadlines } from "@/lib/queries";
 import { StatusBadge } from "@/components/badges";
-import { DecorativeImage, EmptyState } from "@/components/carnet-ui";
 import { formatShort, relativeDeadline } from "@/lib/dates";
 
 export const metadata = { title: "Accueil" };
@@ -44,26 +43,16 @@ export default async function AccueilPage() {
 
   return (
     <div className="mx-auto max-w-6xl">
-      <header className="relative pb-8 pt-1">
-        <DecorativeImage
-          src="/carnet-map-print.png"
-          variant="watermark"
-          fill
-          sizes="280px"
-          className="right-0 top-0 hidden h-44 w-60 lg:block"
-          imageClassName="opacity-[0.2]"
-        />
-        <div className="relative z-10 max-w-2xl">
-          <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-            Salut {firstName},<br />on part où ?
-          </h1>
-          <p className="mt-3 font-display text-base italic text-lagoon">Ton aventure commence ici.</p>
-          <span className="mt-3 block h-0.5 w-16 -rotate-2 bg-saffron" />
-        </div>
+      <header className="mb-8 rounded-2xl border border-line/90 bg-paper/70 p-6 md:p-7">
+        <h1 className="font-display max-w-2xl text-4xl font-semibold leading-[1.02] tracking-tight md:text-5xl lg:text-6xl">
+          Salut {firstName},<br />on part où ?
+        </h1>
+        <p className="mt-3 font-display text-base italic text-lagoon">Ton aventure commence ici.</p>
+        <span className="mt-3 block h-0.5 w-16 -rotate-2 bg-saffron" />
       </header>
 
-      <section className="relative py-7" aria-label="Étapes du départ">
-        <p className="mb-4 font-display text-sm italic text-lagoon">Ton parcours</p>
+      <section className="border-b border-line/80 py-7" aria-label="Étapes du départ">
+        <p className="mb-5 font-display text-sm italic text-lagoon">Ton parcours</p>
         <div className="relative grid grid-cols-4">
           <span className="absolute left-[12.5%] right-[12.5%] top-4 h-px bg-line" />
           {STEPS.map((step, index) => {
@@ -90,13 +79,11 @@ export default async function AccueilPage() {
         </div>
       </section>
 
-      <section className="grid gap-5 pb-8 lg:grid-cols-3">
+      <section className="grid gap-5 py-8 lg:grid-cols-3">
         <div className="paper-note -rotate-[0.35deg] p-5">
           <SectionTitle title="Prochains délais" href="/calendrier" />
           {deadlines.length === 0 ? (
-            <EmptyState
-              compact
-              image={null}
+            <CardEmpty
               title="Calme avant la tempête"
               description="Aucune échéance proche. Profite du calme."
             />
@@ -126,9 +113,7 @@ export default async function AccueilPage() {
         <div className="paper-note rotate-[0.25deg] p-5">
           <SectionTitle title="Mes candidatures" href="/suivi" />
           {tracks.length === 0 ? (
-            <EmptyState
-              compact
-              image={null}
+            <CardEmpty
               title="Première piste"
               description="Ta première candidature apparaîtra ici."
               href="/offres"
@@ -185,6 +170,30 @@ function SectionTitle({ title, href }: { title: string; href: string }) {
       <Link href={href} className="text-[11px] font-medium text-lagoon hover:underline">
         Voir tout
       </Link>
+    </div>
+  );
+}
+
+function CardEmpty({
+  title,
+  description,
+  href,
+  cta,
+}: {
+  title: string;
+  description: string;
+  href?: string;
+  cta?: string;
+}) {
+  return (
+    <div className="py-6">
+      <p className="font-display text-base font-semibold">{title}</p>
+      <p className="mt-1 text-sm leading-6 text-muted">{description}</p>
+      {href && cta ? (
+        <Link href={href} className="mt-3 inline-flex text-xs font-semibold text-lagoon hover:underline">
+          {cta}
+        </Link>
+      ) : null}
     </div>
   );
 }

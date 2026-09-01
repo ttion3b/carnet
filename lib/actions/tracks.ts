@@ -12,7 +12,7 @@ export async function addToTrackAction(opportunityId: string) {
     where: { userId_opportunityId: { userId: user.id, opportunityId } },
   });
   if (existing) {
-    redirect(`/suivi/${existing.id}`);
+    redirect(`/suivi?track=${existing.id}`);
   }
 
   const track = await prisma.track.create({
@@ -31,7 +31,7 @@ export async function addToTrackAction(opportunityId: string) {
 
   revalidatePath("/suivi");
   revalidatePath(`/offres/${opportunityId}`);
-  redirect(`/suivi/${track.id}`);
+  redirect(`/suivi?track=${track.id}`);
 }
 
 export async function updateTrackStatusAction(trackId: string, status: string) {

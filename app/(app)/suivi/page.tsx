@@ -46,7 +46,6 @@ export default async function SuiviPage() {
       <PageHeader
         title="Mes pistes"
         description="Toutes les destinations et offres que tu suis, classées par état d’avancement."
-        image="/carnet-suivi-ledger.png"
         action={
           <Link
             href="/offres"
