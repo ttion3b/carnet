@@ -103,7 +103,13 @@ export async function updateOfferAction(id: string, formData: FormData) {
   redirect(`/offres/${id}`);
 }
 
-export async function addCommentAction(opportunityId: string, formData: FormData) {
+export type CommentFormState = { ok?: boolean; error?: string } | null;
+
+export async function addCommentAction(
+  opportunityId: string,
+  _prev: CommentFormState,
+  formData: FormData,
+): Promise<CommentFormState> {
   const user = await requireUser();
   const body = String(formData.get("body") ?? "").trim();
   if (body.length < 2) return { error: "Écris au moins quelques mots." };

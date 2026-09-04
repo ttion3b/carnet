@@ -2,13 +2,14 @@
 
 import { useActionState, useState } from "react";
 import { Button, Textarea } from "@/components/ui";
+import type { CommentFormState } from "@/lib/actions/offers";
 
 const MAX = 500;
 
 export function OfferCommentForm({
   action,
 }: {
-  action: (prev: { ok?: boolean; error?: string } | null, formData: FormData) => Promise<{ ok?: boolean; error?: string } | null>;
+  action: (prev: CommentFormState, formData: FormData) => Promise<CommentFormState>;
 }) {
   const [state, formAction, pending] = useActionState(action, null);
   const [length, setLength] = useState(0);
